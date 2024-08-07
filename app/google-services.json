@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "534520024956",
+    "project_id": "pasteleriaapp-bc52f",
+    "storage_bucket": "pasteleriaapp-bc52f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534520024956:android:6febf38d42104bbd359ef9",
+        "android_client_info": {
+          "package_name": "com.erick.apppasteleria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4iauj51AUwLe0JJ3obXvrq6hm_DRMqzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
