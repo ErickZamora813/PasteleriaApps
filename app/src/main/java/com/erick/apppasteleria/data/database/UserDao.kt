@@ -1,4 +1,4 @@
-package com.erick.apppasteleria.data
+package com.erick.apppasteleria.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert

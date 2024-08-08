@@ -18,8 +18,6 @@ sealed class Destinations(
     val route: String
 ) {
 
-
-
 }
 
 sealed class Destinations2(

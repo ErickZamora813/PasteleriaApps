@@ -1,4 +1,4 @@
-package com.erick.apppasteleria.data
+package com.erick.apppasteleria.data.database
 
 import android.content.Context
 import androidx.room.Database
@@ -14,7 +14,7 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase{
+        fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,

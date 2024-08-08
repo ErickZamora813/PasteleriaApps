@@ -1,4 +1,4 @@
-package com.erick.apppasteleria.di
+package com.erick.apppasteleria.data.di
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +16,7 @@ interface DirectionsService {
     ): Directions
 
     companion object{
-        fun create(): DirectionsService{
+        fun create(): DirectionsService {
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://maps.googleapis.com/maps/api/directions/")
                 .addConverterFactory(GsonConverterFactory.create())

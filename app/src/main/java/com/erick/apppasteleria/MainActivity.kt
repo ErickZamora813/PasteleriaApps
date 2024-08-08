@@ -4,25 +4,13 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.erick.apppasteleria.data.AppDatabase
 import com.erick.apppasteleria.ui.components.NavigationBar
-import com.erick.apppasteleria.ui.components.TopMenu
-import com.erick.apppasteleria.ui.navigation.Destinations2
 import com.erick.apppasteleria.ui.navigation.Destinations2.*
 import com.erick.apppasteleria.ui.navigation.NavigationHost
-import com.erick.apppasteleria.ui.screens.FavoritosScreen
-import com.erick.apppasteleria.ui.screens.HomeScreen
-import com.erick.apppasteleria.ui.screens.LoginScreen
-import com.erick.apppasteleria.ui.screens.MapsScreen
-import com.erick.apppasteleria.ui.screens.Perfil
-import com.erick.apppasteleria.ui.screens.ScreenPrueba
 import com.erick.apppasteleria.ui.theme.AppPasteleriaTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,8 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppPasteleriaTheme {
                 val navController = rememberNavController()
-
-                NavigationHost(navController = navController)
+                ScreenPrincipal(navController)
             }
         }
     }
@@ -43,7 +30,6 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ScreenPrincipal(navController: NavHostController){
-
     val navigationItems = listOf(
         Home,
         Favorito,
@@ -55,5 +41,4 @@ fun ScreenPrincipal(navController: NavHostController){
     }){
         NavigationHost(navController)
     }
-
 }

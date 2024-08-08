@@ -1,4 +1,4 @@
-package com.erick.apppasteleria.di
+package com.erick.apppasteleria.data.di
 
 data class Directions (
     val routes: List<Route>

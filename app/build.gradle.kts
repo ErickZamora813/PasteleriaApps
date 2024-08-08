@@ -58,6 +58,11 @@ android {
 
 dependencies {
 
+
+
+    //Imagenes
+    implementation(libs.coil.compose)
+
     //Iconos Ext
     implementation("androidx.compose.material:material-icons-extended-android:1.6.8")
 
@@ -65,6 +70,9 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.firebase:firebase-firestore-ktx:25.0.0")
+
+    //Firebase Analytics
+    implementation("com.google.firebase:firebase-analytics")
 
     //Maps
     implementation (libs.maps.compose)
@@ -80,6 +88,12 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.2.1")
+
+    //Dagger
+    implementation ("com.google.dagger:hilt-android:2.48.1")
+    kapt ("com.google.dagger:hilt-compiler:2.48.1")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
 
 
     implementation (libs.accompanist.pager.v0280 )

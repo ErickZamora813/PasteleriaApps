@@ -103,7 +103,6 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = viewMo
                     .clickable { showLoginForm.value = !showLoginForm.value }
                     .padding(5.dp),
                 )
-
             }
         }
 

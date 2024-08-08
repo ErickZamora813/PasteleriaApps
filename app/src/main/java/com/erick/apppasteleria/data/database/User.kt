@@ -1,4 +1,4 @@
-package com.erick.apppasteleria.data
+package com.erick.apppasteleria.data.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

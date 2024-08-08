@@ -5,7 +5,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.erick.apppasteleria.ScreenPrincipal
-import com.erick.apppasteleria.ui.navigation.Destinations2.*
+import com.erick.apppasteleria.ui.navigation.Destinations2.Favorito
+import com.erick.apppasteleria.ui.navigation.Destinations2.Home
+import com.erick.apppasteleria.ui.navigation.Destinations2.Login
+import com.erick.apppasteleria.ui.navigation.Destinations2.Maps
+import com.erick.apppasteleria.ui.navigation.Destinations2.Perfil
+import com.erick.apppasteleria.ui.navigation.Destinations2.Prueba
+import com.erick.apppasteleria.ui.navigation.Destinations2.ScreenPrincipal
 import com.erick.apppasteleria.ui.screens.FavoritosScreen
 import com.erick.apppasteleria.ui.screens.HomeScreen
 import com.erick.apppasteleria.ui.screens.LoginScreen
@@ -16,36 +22,32 @@ import com.erick.apppasteleria.ui.screens.ScreenPrueba
 @Composable
 fun NavigationHost(navController: NavHostController) {
 
-    NavHost(navController = navController, startDestination = Login.route) {
+    NavHost(navController = navController, startDestination = Home.route) {
         composable(Login.route) {
             LoginScreen(navController = navController)
-
         }
-
-        composable(ScreenPrincipal.route){
+        composable(ScreenPrincipal.route) {
             ScreenPrincipal(navController)
         }
 
         composable(Home.route) {
-                HomeScreen(
-                    navController = navController,
-                    navegarMapsScreen = { navController.navigate(Maps.route) }
-                )
-            }
+            HomeScreen(
+                navController = navController,
+                navegarMapsScreen = { navController.navigate(Maps.route) }
+            )
+        }
         composable(Favorito.route) {
-                FavoritosScreen()
-            }
+            FavoritosScreen()
+        }
         composable(Perfil.route) {
-                Perfil()
-            }
+            Perfil()
+        }
         composable(Maps.route) {
-                MapsScreen()
-            }
+            MapsScreen()
+        }
         composable(Prueba.route) {
-                ScreenPrueba()
-            }
-
-
+            ScreenPrueba()
+        }
 
 
     }

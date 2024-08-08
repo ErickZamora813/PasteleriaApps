@@ -1,4 +1,4 @@
-package com.erick.apppasteleria.data
+package com.erick.apppasteleria.data.mapsroutes
 
 import com.google.android.gms.maps.model.LatLng
 import org.json.JSONObject

@@ -1,4 +1,4 @@
-package com.erick.apppasteleria.data
+package com.erick.apppasteleria.data.listas
 
 import com.erick.apppasteleria.R
 

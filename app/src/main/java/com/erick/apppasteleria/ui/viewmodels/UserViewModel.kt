@@ -2,8 +2,8 @@ package com.erick.apppasteleria.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.erick.apppasteleria.data.User
-import com.erick.apppasteleria.data.UserDao
+import com.erick.apppasteleria.data.database.User
+import com.erick.apppasteleria.data.database.UserDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
