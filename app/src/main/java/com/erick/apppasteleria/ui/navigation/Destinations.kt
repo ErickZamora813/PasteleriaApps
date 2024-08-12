@@ -16,9 +16,7 @@ import com.erick.apppasteleria.ui.screens.Perfil
 
 sealed class Destinations(
     val route: String
-) {
-
-}
+)
 
 sealed class Destinations2(
     val route: String,

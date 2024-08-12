@@ -85,6 +85,11 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = viewMo
                     isCreateAccount = true
 
                 ) { email, password ->
+                    viewModel.createUserWithEmailAndPassword(email, password){
+                        navController.navigate(Destinations2.ScreenPrincipal.route){
+                            popUpTo(Destinations2.Login.route){ inclusive = true}
+                        }
+                    }
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))
@@ -114,13 +119,13 @@ fun UserForm(
     isCreateAccount: Boolean = false,
     onDone: (String, String) -> Unit = { email, pwd -> }
 ) {
-    val email = rememberSaveable() {
+    val email = rememberSaveable {
         mutableStateOf("")
     }
-    val password = rememberSaveable() {
+    val password = rememberSaveable {
         mutableStateOf("")
     }
-    val passwordVisible = rememberSaveable() {
+    val passwordVisible = rememberSaveable {
         mutableStateOf(false)
     }
     val valido = remember(email.value, password.value) {

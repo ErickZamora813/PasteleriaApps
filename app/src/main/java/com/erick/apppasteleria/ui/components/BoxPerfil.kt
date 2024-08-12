@@ -7,16 +7,21 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextButton
 import androidx.compose.material3.Card
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -57,6 +62,7 @@ fun BoxPerfil(modifier: Modifier = Modifier) {
             imageUri.value = uri
 
         }
+    val showDialog = remember { mutableStateOf(false) }
 
     Card(
         modifier.padding(20.dp),
@@ -73,54 +79,55 @@ fun BoxPerfil(modifier: Modifier = Modifier) {
         ) {
             Row {
 
-                imageUri.value?.let {
-                    Image(
-                        painter = rememberAsyncImagePainter(model = it),
-                        contentDescription = null,
-                        modifier
-                            .padding(20.dp)
-                            .width(100.dp)
-                    )
-                } ?: bitmap.value?.let {
-                    Image(
-                        bitmap = it.asImageBitmap(), contentDescription = null,
-                        modifier
-                            .padding(20.dp)
-                            .width(100.dp)
-                            .height(100.dp)
-                    )
-                } ?: Image(
-                    painter = painterResource(id = R.drawable.pngegg),
-                    contentDescription = null,
-                    modifier
+                Box(
+                    modifier = Modifier
                         .padding(20.dp)
                         .width(100.dp)
                         .height(100.dp)
-                )
-
-                Column(modifier.padding(10.dp)) {
-                    Text(text = "Nombre de usuario", modifier.padding(5.dp))
-                    Text(text = "Email", modifier.padding(5.dp))
-                    Text(text = "Phone", modifier.padding(5.dp))
-                    Text(text = "Address", modifier.padding(5.dp))
+                        .clickable { showDialog.value = true }
+                ) {
+                    imageUri.value?.let {
+                        Image(
+                            painter = rememberAsyncImagePainter(model = it),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    } ?: bitmap.value?.let {
+                        Image(
+                            bitmap = it.asImageBitmap(),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    } ?: Image(
+                        painter = painterResource(id = R.drawable.pngegg),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize()
+                    )
                 }
+
+//                Column(modifier.padding(10.dp)) {
+//                    Text(text = "Nombre de usuario", modifier.padding(5.dp))
+//                    Text(text = "Email", modifier.padding(5.dp))
+//                    Text(text = "Phone", modifier.padding(5.dp))
+//                    Text(text = "Address", modifier.padding(5.dp))
+//                }
             }
 
             Spacer(modifier = modifier.height(20.dp))
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Button(onClick = { launcherCamera.launch(null) }) {
-                    Text(text = "Usar Cámara")
-                }
-                Button(onClick = { launcherGalllery.launch("image/*") }) {
-                    Text(text = "Abrir Galería")
-                }
-            }
+//            Row(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(10.dp),
+//                horizontalArrangement = Arrangement.SpaceBetween
+//            ) {
+//                Button(onClick = { launcherCamera.launch(null) }) {
+//                    Text(text = "Usar Cámara")
+//                }
+//                Button(onClick = { launcherGalllery.launch("image/*") }) {
+//                    Text(text = "Abrir Galería")
+//                }
+//            }
 
             Text(text = "Editar Perfil", modifier.padding(15.dp))
 
@@ -165,8 +172,33 @@ fun BoxPerfil(modifier: Modifier = Modifier) {
 
             }
         }
-
     }
+
+    if (showDialog.value) {
+        AlertDialog(
+            onDismissRequest = { showDialog.value = false },
+            title = { Text(text = "Cambiar imagen de perfil") },
+            text = { Text("Elige una opción") },
+            confirmButton = {
+                TextButton(onClick = {
+                    showDialog.value = false
+                    launcherCamera.launch(null)
+                }) {
+                    Text("Usar Cámara")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    showDialog.value = false
+                    launcherGalllery.launch("image/*")
+                }) {
+                    Text("Abrir Galería")
+                }
+            }
+        )
+    }
+
+
 }
 
 @Preview(showBackground = true)

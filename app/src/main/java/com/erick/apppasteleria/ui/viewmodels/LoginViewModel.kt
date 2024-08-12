@@ -25,13 +25,31 @@ class LoginViewModel : ViewModel() {
                             Log.d("Hola", "Se ha ingresado de manera correcta")
                             onSucces()
                         } else {
-                            Log.d("Hola", "Ha ocurrido algo ${task.result.toString()}")
+                            Log.d("Hola", "Ha ocurrido algo ${task.result}")
                         }
 
                     }
-            }
-            catch (ex:Exception){
+            } catch (ex: Exception) {
                 Log.d("Hola", "No se que ha pasado ${ex.message}")
             }
         }
+
+    fun createUserWithEmailAndPassword(email: String, password: String, onSucces: () -> Unit) {
+        if (_loading.value == false){
+            _loading.value = true
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener {task ->
+                    if (task.isSuccessful){
+
+                    }
+                    else{
+                        Log.d("Hola", "Ha ocurrido un error en el registro: ${task.result.toString()}")
+                    }
+                    _loading.value = false
+
+                }
+
+        }
+
+    }
 }

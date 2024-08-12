@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+//    alias(libs.plugins.android.hilt)
     id("kotlin-kapt")
     id("androidx.room")
     id("com.google.gms.google-services")
@@ -37,11 +38,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -54,7 +55,12 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+//    kapt {
+//        correctErrorTypes = true
+//    }
 }
+
+
 
 dependencies {
 
@@ -85,15 +91,15 @@ dependencies {
     implementation ("com.google.accompanist:accompanist-permissions:0.26.2-beta")
 
     //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.2.1")
-
-    //Dagger
-    implementation ("com.google.dagger:hilt-android:2.48.1")
-    kapt ("com.google.dagger:hilt-compiler:2.48.1")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.okhttp)
+    implementation (libs.logging.interceptor)
+//
+//    //Dagger
+//    implementation (libs.hilt.android)
+//    kapt (libs.hilt.android.compiler)
+//    implementation (libs.androidx.hilt.navigation.compose)
 
 
     implementation (libs.accompanist.pager.v0280 )
@@ -135,3 +141,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+

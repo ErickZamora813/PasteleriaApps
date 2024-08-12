@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 
 @Composable
 fun NavigationBar1(navController: NavController) {
-    BottomNavigation() {
+    BottomNavigation {
         BottomNavigationItem(
             selected = false,
             label = { Text("Home") },

@@ -9,10 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.erick.apppasteleria.ui.components.NavigationBar
+import com.erick.apppasteleria.ui.components.TopMenu
 import com.erick.apppasteleria.ui.navigation.Destinations2.*
 import com.erick.apppasteleria.ui.navigation.NavigationHost
 import com.erick.apppasteleria.ui.theme.AppPasteleriaTheme
-
+//import dagger.hilt.android.AndroidEntryPoint
+//
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +24,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppPasteleriaTheme {
                 val navController = rememberNavController()
-                ScreenPrincipal(navController)
+                NavigationHost(navController)
             }
         }
     }
@@ -37,8 +40,9 @@ fun ScreenPrincipal(navController: NavHostController){
     )
     Scaffold(topBar = {
         //TopMenu(navController)
-        NavigationBar(navController = navController, items = navigationItems)
+        //NavigationBar(navController = navController, items = navigationItems)
     }){
-        NavigationHost(navController)
+        TopMenu(navController)
+        //NavigationHost(navController)
     }
 }

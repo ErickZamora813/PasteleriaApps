@@ -22,7 +22,7 @@ import com.erick.apppasteleria.ui.screens.ScreenPrueba
 @Composable
 fun NavigationHost(navController: NavHostController) {
 
-    NavHost(navController = navController, startDestination = Home.route) {
+    NavHost(navController = navController, startDestination = Login.route) {
         composable(Login.route) {
             LoginScreen(navController = navController)
         }
