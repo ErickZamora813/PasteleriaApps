@@ -17,33 +17,22 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
+import coil.size.Scale
+import com.erick.apppasteleria.R
 import com.erick.apppasteleria.data.listas.imageList
+import com.erick.apppasteleria.domain.listeners.Pasteles
 import com.erick.apppasteleria.ui.theme.BordesImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlin.math.min
 
-@Composable
-fun ColeccionPasteles(modifier: Modifier = Modifier) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-
-    }
-
-
-}
-
-fun getImagesForPage(page: Int, pageSize: Int, images: List<Int>): List<Int> {
-    val fromIndex = page * pageSize
-    val toIndex = minOf(fromIndex + pageSize, images.size)
-    return if (fromIndex < toIndex) images.subList(fromIndex, toIndex) else emptyList()
-}
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun IconosPasteles() {
+fun IconosPasteles(pastelesList: List<Pasteles>) {
+
 
 
     val pageSize = 6
@@ -60,7 +49,7 @@ fun IconosPasteles() {
     ) { page ->
         val start = page * pageSize
         val end = min(start + pageSize, imageList.size)
-        val currentImages = imageList.subList(start, end)
+        val currentImages = pastelesList.subList(start, end)
 
         Column(
             modifier = Modifier
@@ -76,9 +65,16 @@ fun IconosPasteles() {
                         .padding(vertical = 8.dp),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    rowImages.forEach { imageRes ->
+                    rowImages.forEach { pastel ->
                         Image(
-                            painter = painterResource(id = imageRes),
+                            painter = rememberImagePainter(
+                                data = pastel.imagen,
+                                builder = {
+                                    scale(Scale.FILL)
+                                    placeholder(R.drawable.pastel2)
+                                    error(R.drawable.pastel3)
+                                }
+                            ),
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
@@ -96,7 +92,7 @@ fun IconosPasteles() {
 @Preview(showBackground = true)
 @Composable
 fun previewimagenes() {
-    IconosPasteles()
+
 
 }
 

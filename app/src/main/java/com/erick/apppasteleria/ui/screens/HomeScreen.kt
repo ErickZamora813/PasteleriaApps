@@ -17,29 +17,34 @@ import androidx.compose.material.Text
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.erick.apppasteleria.R
 import com.erick.apppasteleria.ui.components.IconosPasteles
 import com.erick.apppasteleria.ui.components.SliderImage
 import com.erick.apppasteleria.ui.theme.BordesImage
 import com.erick.apppasteleria.ui.theme.PinkPasteleria
+import com.erick.apppasteleria.ui.viewmodels.HomeViewModel
 
 @Composable
 fun HomeScreen(
-//    homeViewModel: HomeViewModel = hiltViewModel(),
+    homeViewModel: HomeViewModel = hiltViewModel(),
     navController: NavHostController,
     navegarMapsScreen: () -> Unit
 ) {
+    val pastelesList by homeViewModel.pastelesList.observeAsState(emptyList())
 
-//    LaunchedEffect (true){
-//        homeViewModel.pastelesList
-//
-//    }
+    LaunchedEffect (true){
+        homeViewModel.getPastelesApp()
+
+    }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -60,7 +65,7 @@ fun HomeScreen(
             ) {
                 SliderImage()
                 Spacer(modifier = Modifier.height(25.dp))
-                IconosPasteles()
+                IconosPasteles(pastelesList = pastelesList)
                 Spacer(modifier = Modifier.height(40.dp))
                 SliderImage()
             }

@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-//    alias(libs.plugins.android.hilt)
+    alias(libs.plugins.android.hilt)
     id("kotlin-kapt")
     id("androidx.room")
     id("com.google.gms.google-services")
@@ -55,9 +55,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-//    kapt {
-//        correctErrorTypes = true
-//    }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 
@@ -82,8 +82,7 @@ dependencies {
 
     //Maps
     implementation (libs.maps.compose)
-    // Optionally, you can include the Compose utils library for Clustering,
-    // Street View metadata checks, etc.
+
     implementation (libs.maps.compose.utils)
     implementation (libs.maps.compose.widgets)
     implementation (libs.play.services.location)
@@ -95,19 +94,16 @@ dependencies {
     implementation (libs.converter.gson)
     implementation (libs.okhttp)
     implementation (libs.logging.interceptor)
-//
-//    //Dagger
-//    implementation (libs.hilt.android)
-//    kapt (libs.hilt.android.compiler)
-//    implementation (libs.androidx.hilt.navigation.compose)
+
+    //Dagger
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("androidx.compose.runtime:runtime-livedata:1.0.5")
+
 
 
     implementation (libs.accompanist.pager.v0280 )
-
-
-
-
-
 
     implementation ("androidx.compose.ui:ui:1.4.0")
     implementation ("androidx.compose.material:material:1.4.0")

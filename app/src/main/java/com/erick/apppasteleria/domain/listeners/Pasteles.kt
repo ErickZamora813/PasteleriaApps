@@ -6,7 +6,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 data class Pasteles (
     val id: String,
     val nombre: String,
-    val imagen: ImageVector,
+    val imagen: String,
     val fecha_reg: String,
     val descripcion: String
 )

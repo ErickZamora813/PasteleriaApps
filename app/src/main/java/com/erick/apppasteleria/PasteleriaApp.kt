@@ -1,6 +1,7 @@
 package com.erick.apppasteleria
 
 import android.app.Application
-//import dagger.hilt.android.HiltAndroidApp
-//
-//@HiltAndroidApp
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class PasteleriaApp : Application()

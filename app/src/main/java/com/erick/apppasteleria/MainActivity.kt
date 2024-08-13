@@ -13,9 +13,9 @@ import com.erick.apppasteleria.ui.components.TopMenu
 import com.erick.apppasteleria.ui.navigation.Destinations2.*
 import com.erick.apppasteleria.ui.navigation.NavigationHost
 import com.erick.apppasteleria.ui.theme.AppPasteleriaTheme
-//import dagger.hilt.android.AndroidEntryPoint
-//
-//@AndroidEntryPoint
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

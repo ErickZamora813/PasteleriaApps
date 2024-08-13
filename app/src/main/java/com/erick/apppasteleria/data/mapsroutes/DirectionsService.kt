@@ -1,8 +1,7 @@
-package com.erick.apppasteleria.data.di
+package com.erick.apppasteleria.data.mapsroutes
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Query
 
